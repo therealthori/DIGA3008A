@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SiteThori</title>
+    <link rel="stylesheet" href="style.css">
+    <style type="text/css">
+        *{
+            text-decoration: none;
+        }
+        .navbar{
+            background: brown; font-family: calibri; padding-right: 15px; padding-left: 15px;
+        }
+        .navdiv{
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo a{
+            font-size: 35px; font-weight: 600; color: white;
+        }
+        li{
+            list-style: none; display: inline-block;
+        }
+        li a{
+            color: white; font-size: 18px; font-weight: bold; margin-right: 25px;
+        }
+    </style>
 </head>
 <body>
-        <!--Navigation Tab-->
-        <h1>ThoriStory</h1>
+        <nav class="navbar">
+            <div class="navdiv">
+                <div class="logo"><a href="index.html">ThoriStory</a></div>
 
-            <ul>
-                <li><a href="index.html">The Pozi</a></li>
-                <li><a href="portfolio.html">Great Works</a></li>
-                <li><a href="academia.html">Academia</a></li>
-                <li><a href="about.html">The Boi</a></li>
-            </ul>
-    
-            <hr/>
+                <ul>
+                    <li><a href="portfolio.html">Great Works</a></li>
+                    <li><a href="academia.html">Academia</a></li>
+                    <li><a href="about.html">The Boi</a></li>
+                </ul>
+            </div>     
+        </nav>
         <!--End of Navigation Tab-->
         
         <h2>Welcome to Thori's World</h2>
