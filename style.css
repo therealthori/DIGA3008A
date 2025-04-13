@@ -1,5 +1,8 @@
 *{
     text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
 }
 .navbar{
     background: #552601; font-family: calibri; padding-right: 15px; padding-left: 15px;
@@ -147,5 +150,145 @@ footer{
     flex-basis: 10rem;
     flex-grow: 1;
     flex-shrink: 1;
+}
 
+.container1{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #C4B9AD;
+}
+
+.service-wrapper{
+    padding: 5% 8%;
+}
+
+.service{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+    color: #111;
+    font-size: 3rem;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: transparent;
+    letter-spacing: 4px;
+    background-color: #552601;
+    background: linear-gradient(8deg, rgba(70,43,9,1) 0%, rgba(224,133,15,0.74) 41%,rgba(158,90,2,1)100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+h1:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    height: 8px;
+    width: 80%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+h1 span{
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: white;
+    animation: anim 5s linear infinite;
+}
+
+@keyframes anim{
+    95%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        left: 88%;
+    }
+}
+
+.cards{
+    display: grip;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    margin-top: 40px;
+}
+.card{
+    height: 160px;
+    width: 870px;
+    background-color: #3E270B;
+    padding: 3% 8%;
+    border: 0.2px solid #C4B9AD;
+    border-radius: 8px;
+    transition: .6s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.card :after{
+    content: "";
+    position: absolute;
+    top: 150%;
+    left: -100px;
+    width: 120%;
+    transform: rotate(50deg);
+    background-color: white;
+    height: 9px;
+    filter: blur(15px);
+    opacity: 0.5;
+    transition: 1s;
+}
+
+.card:hover:after{
+    width: 225%;
+    top: -100%;
+}
+
+.card i{
+    color: #AE4600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+}
+
+.card h2{
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1;
+}
+
+.card p{
+    text-align: center;
+    width: 100%;
+    margin: 6px 0;
+    color: white;
+}
+
+.card:hover{
+    background-color: transparent;
+    transform: translateY(-8px);
+    border-color: #AE4600;
+}
+
+.home{
+    background-image: url(Images/Thori.JPG);
+    height: 400px;
+    position: relative;
+}
+
+.home p{
+    color: white;
+    text-align: center;position: relative;
+    top: 50%;
 }
