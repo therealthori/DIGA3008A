@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: 0;
+    font-family: 'Raleway';
 }
 
 body{
@@ -433,3 +434,13 @@ p{
         transform: translateX(-100%);
     }
 }
+
+.continent{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 80px 12%;
+    margin-top: 50px;
+}
+
