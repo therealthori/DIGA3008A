@@ -305,6 +305,11 @@ footer{
     top: 50%;
 }
 
+.home h1{
+    color: #fff;
+    text-align: center;
+}
+
 p{
     color: #111;
 }
@@ -545,3 +550,119 @@ p{
     transform: translateY(-8px);
     border-color: #AE4600;
 }
+
+.wrapper{
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)) url('./Images/Brown.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.testimonial{
+    padding: 30px 100px;
+}
+
+article h1{
+    font-size: 50 px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+article h1:after{
+    content: "";
+    height: 5px;
+    width: 225px;
+    background-color: #fff;
+    display: block;
+    margin: auto;
+}
+
+article img{
+    height: 225px;
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 60px;
+}
+
+blockquote{
+    font-family: 'Roboto';
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+article h5{
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-top: 30px;
+    letter-spacing: 1.5;
+}
+
+article p{
+    font-size: 17px;
+}
+
+.socials-container{
+    display: flex;
+    gap: 20px;
+  }
+  .socials-container a{
+    background-color: white;
+    padding: 1em;
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  }
+  .socials-container a svg{
+    height: 32px;
+  }
+  .socials-container a::before{
+    content: attr(data-social);
+    position: absolute;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 100px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    transform: translateY(-30px) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
+  }
+  .socials-container a:hover{
+    background-color: var(--accent-color);
+    fill: white;
+  }
+  .socials-container a::after{
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid var(--accent-color);
+    transform: translateY(0) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
+  }
+  .socials-container a:hover::before{
+    transform: translateY(-65px) rotate(0);
+    opacity: 1;
+  }
+  .socials-container a:hover::after{
+    transform: translateY(-42px) rotate(0);
+    opacity: 1;
+  }
+
+ 
