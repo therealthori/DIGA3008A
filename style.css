@@ -444,3 +444,23 @@ p{
     margin-top: 50px;
 }
 
+.wrap_up{
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.wrap_up .stuff{
+    display: flex;
+    flex-direction: column;gap: 10px;width: 50%;
+}
+
+.wrap_up .stuff .heading{
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #AE4600 0%, #3E270B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
