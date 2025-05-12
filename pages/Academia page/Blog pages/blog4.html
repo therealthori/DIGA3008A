@@ -10,21 +10,28 @@
     </script>
 </head>
 <body>
-    <input type="checkbox" id="check">
-    <label for="check" class="bars"><i class="fa-solid fa-bars-staggered"></i></label>
-
-        <nav class="navbar">
-            <div class="navdiv">
-                <div class="logo"><a href="/index.html">ThoriStory</a></div>
-
-                <ul>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">ThoriStory</a>
+            
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-menu">
+                <ul class="nav-list">
                     <li><a href="/pages/Portfolio page/portfolio.html">Great Works</a></li>
                     <li><a href="/pages/Academia page/academia.html">Academia</a></li>
                     <li><a href="/pages/Design page/design.html">Designs</a></li>
                     <li><a href="/pages/About page/about.html">The Boi</a></li>
                 </ul>
-            </div>     
-        </nav>
+            </nav>
+        </div>
+    </header>
         <!--End of Navigation Tab-->
 
         <h2>Goal Alignment</h2>
@@ -99,6 +106,8 @@
                 </div>
             </div>
             </footer>
+
+            <script src="/Scripts/script.js"></script>
     
         </body>
     </html>

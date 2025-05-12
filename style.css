@@ -36,141 +36,155 @@ p, li, a {
     font-size: 1rem;
 }
 
-/* Navigation Bar - Enhanced */
+/* Navigation Styles */
 .navbar {
     background: #552601;
-    font-family: 'Roboto', sans-serif;
-    padding: 0 15px;
-    height: 60px;
+    padding: 1rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    display: flex;
-    align-items: center;
 }
 
-.navdiv {
+.nav-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 100%;
-    height: 100%;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.logo a {
+.logo {
+    color: white;
     font-size: 1.5rem;
     font-weight: 600;
-    color: white;
-    transition: color 0.3s;
+    text-decoration: none;
 }
 
-.logo a:hover {
-    color: #C4B9AD;
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1001;
 }
 
-nav ul {
+.hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    width: 100%;
+    height: 3px;
+    background-color: #C4B9AD;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #C4B9AD;
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease;
+}
+
+.hamburger-inner::before {
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    top: 8px;
+}
+
+/* Navigation Menu */
+.nav-menu {
     display: flex;
-    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-list {
+    display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    position: relative;
+.nav-list li {
+    margin-left: 2rem;
 }
 
-nav ul li a {
+.nav-list a {
     color: #C4B9AD;
-    font-size: 1rem;
+    text-decoration: none;
     font-weight: 500;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s;
-    display: block;
+    transition: color 0.3s;
 }
 
-nav ul li a:hover {
+.nav-list a:hover {
     color: white;
-    transform: translateY(-2px);
 }
 
-/* Mobile menu toggle */
-#check {
-    display: none;
-}
-
-.bars {
-    color: #C4B9AD;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: none;
-    transition: all 0.3s;
-}
-
-.bars:hover {
-    color: white;
-    transform: scale(1.1);
-}
-
-/* Mobile menu styles */
+/* Mobile Styles */
 @media (max-width: 800px) {
-    .bars {
-        display: block !important; /* Force show */
-        font-size: 1.5rem;
-        color: #C4B9AD;
-        cursor: pointer;
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1001;
+    .hamburger {
+        display: block;
     }
-
-    .logo {
-        order: 2;
-        flex-grow: 1;
-        margin-left: 30px;
-    }
-
-    .navbar {
-        justify-content: center;
-        position: relative;
-    }
-
-    nav ul {
+    
+    .nav-menu {
         position: fixed;
-        width: 100%;
-        height: calc(100vh - 60px);
-        background-color: rgba(85, 38, 1, 0.98);
-        top: 60px;
-        left: -100%;
-        transition: all 0.5s ease;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 2rem;
-        overflow-y: auto;
-    }
-
-    nav ul li {
-        width: 100%;
-        text-align: center;
-        margin: 0.5rem 0;
-    }
-
-    nav ul li a {
-        font-size: 1.2rem;
-        padding: 1rem;
-        color: #C4B9AD;
-    }
-
-    nav ul li a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-    }
-
-    #check:checked ~ ul {
+        top: 0;
         left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #552601;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-list li {
+        margin: 1.5rem 0;
+    }
+    
+    .nav-list a {
+        font-size: 1.2rem;
+    }
+    
+    /* Active state */
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+    
+    .hamburger.active .hamburger-inner {
+        background-color: transparent;
+    }
+    
+    .hamburger.active .hamburger-inner::before {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .hamburger-inner::after {
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
 
