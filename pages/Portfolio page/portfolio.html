@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SiteThori</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/CSS/style.css">
     <script src="https://kit.fontawesome.com/b615dcc3db.js"
     crossorigin="anonymous">
     </script>
@@ -66,31 +66,96 @@
             </div>
         </div> -->
 
-        <div class="container2">
-            <div class="service-wrapper2">
-                <div class="service2">
-                <h1>Portfolio<span></span></h1>
-                <p>A portfolio page is a curated collection of work samples, projects, and achievements designed to showcase a person's skills, experience, and creative style to potential clients, employers, or collaborators.</p>
+        <!-- Main Content -->
+    <main class="portfolio-container">
+        <section class="portfolio-hero">
+            <h1>Great Works</h1>
+            <p>A portfolio page is a curated collection of work samples, projects, and achievements designed to showcase a person's skills, experience, and creative style to potential clients, employers, or collaborators.</p>
+        </section>
+
+        <section class="portfolio-categories">
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">All Works</button>
+                <button class="category-btn" data-category="games">Game Design</button>
+                <button class="category-btn" data-category="writing">Writing</button>
+                <button class="category-btn" data-category="miscellaneous">Other Tings</button>
+            </div>
+        </section>
+
+        <section class="portfolio-grid">
+            <!-- Portfolio Item 1 -->
+            <div class="portfolio-item" data-category="games">
+                <div class="portfolio-img">
+                    <img src="/images/design1.jpg" alt="Design Project 1">
                 </div>
-                <div class="cards2">
-                    <div class="card2">
-                        <a href="./gamedesign.html">
-                        <i class="fa-solid fa-book">
-                            <h2>Game Development</h2>
-                            <p>A game development page is a dedicated space that showcases game projects, development progress, concepts, and technical skills, offering insight into a creator's process and finished interactive experiences</p>
-                        </i>
-                        </a>
-                    </div>
-                    <div class="card2">
-                        <a href="./writing.html">
-                        <i class="fa-solid fa-paintbrush">
-                            <h2>Writing</h2>
-                            <p>A storytelling page is a creative space where narratives, ideas, and experiences are shared through written, visual, or multimedia formats to captivate and connect with an audience.</p>
-                        </i>
-                        </a>
-                    </div>
+                <div class="portfolio-info">
+                    <h3>Visual Identity Design</h3>
+                    <p>Branding and logo design for a startup company</p>
+                    <a href="#" class="portfolio-btn">View Project</a>
                 </div>
             </div>
+
+            <!-- Portfolio Item 2 -->
+            <div class="portfolio-item" data-category="writing">
+                <div class="portfolio-img">
+                    <img src="/images/academic1.jpg" alt="Academic Paper">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Research on Digital Media</h3>
+                    <p>Published academic paper on digital culture</p>
+                    <a href="#" class="portfolio-btn">Read Paper</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 3 -->
+            <div class="portfolio-item" data-category="miscellaneous">
+                <div class="portfolio-img">
+                    <img src="/images/blog1.jpg" alt="Blog Post">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Creative Process</h3>
+                    <p>My approach to design thinking and execution</p>
+                    <a href="#" class="portfolio-btn">Read Post</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 4 -->
+            <div class="portfolio-item" data-category="games">
+                <div class="portfolio-img">
+                    <img src="/images/design2.jpg" alt="Design Project 2">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Website Redesign</h3>
+                    <p>Complete overhaul of user interface</p>
+                    <a href="#" class="portfolio-btn">View Project</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 5 -->
+            <div class="portfolio-item" data-category="writing">
+                <div class="portfolio-img">
+                    <img src="/images/academic2.jpg" alt="Academic Presentation">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Media Theory Analysis</h3>
+                    <p>Conference presentation on contemporary theory</p>
+                    <a href="#" class="portfolio-btn">View Slides</a>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 6 -->
+            <div class="portfolio-item" data-category="miscellaneous">
+                <div class="portfolio-img">
+                    <img src="/images/blog2.jpg" alt="Blog Post">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Art and Technology</h3>
+                    <p>Exploring the intersection of creative fields</p>
+                    <a href="#" class="portfolio-btn">Read Post</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
         <footer>
             <div class = "footerContainer">
