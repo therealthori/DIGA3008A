@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+
+        initBackToTopButton();
     });
 
     // Animation on scroll
@@ -173,30 +175,30 @@ function opentab(event, tabname) {
     document.getElementById(tabname).classList.add("active-tab");
 }
 
-// Back to Top Button JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the buttons
-    const backToTopBtn = document.getElementById('backToTopBtn');
-    const backToTopTextBtn = document.getElementById('backToTopTextBtn');
+// Back to Top Button Functionality
+function initBackToTopButton() {
+    // Create the back to top button if it doesn't exist
+    let backToTopBtn = document.querySelector('.back-to-top');
+    
+    if (!backToTopBtn) {
+        backToTopBtn = document.createElement('button');
+        backToTopBtn.className = 'back-to-top';
+        backToTopBtn.innerHTML = '↑';
+        backToTopBtn.setAttribute('aria-label', 'Back to top');
+        backToTopBtn.setAttribute('title', 'Back to top');
+        document.body.appendChild(backToTopBtn);
+    }
 
     // Show/hide button based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) { // Show after scrolling 300px
-            if (backToTopBtn) {
-                backToTopBtn.classList.add('show');
-            }
-            // Uncomment the line below to use text version instead
-            // if (backToTopTextBtn) backToTopTextBtn.classList.add('show');
+    function toggleBackToTopButton() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
         } else {
-            if (backToTopBtn) {
-                backToTopBtn.classList.remove('show');
-            }
-            // Uncomment the line below to use text version instead
-            // if (backToTopTextBtn) backToTopTextBtn.classList.remove('show');
+            backToTopBtn.classList.remove('show');
         }
-    });
+    }
 
-    // Smooth scroll to top function
+    // Smooth scroll to top when button is clicked
     function scrollToTop() {
         window.scrollTo({
             top: 0,
@@ -204,21 +206,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add click event listeners
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', scrollToTop);
-    }
-    
-    if (backToTopTextBtn) {
-        backToTopTextBtn.addEventListener('click', scrollToTop);
-    }
+    // Event listeners
+    window.addEventListener('scroll', toggleBackToTopButton);
+    backToTopBtn.addEventListener('click', scrollToTop);
 
-    // Alternative: To use the text version instead of arrow version,
-    // uncomment these lines:
-    // if (backToTopTextBtn) {
-    //     backToTopTextBtn.style.display = 'block';
-    // }
-    // if (backToTopBtn) {
-    //     backToTopBtn.style.display = 'none';
-    // }
-});
+    // Initial check for button visibility
+    toggleBackToTopButton();
+}
