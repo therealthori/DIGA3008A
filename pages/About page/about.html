@@ -46,6 +46,53 @@
                 </article>
             </div>
         </div>
+
+        <!-- about -->
+        <div id="about">
+            <div class="holder">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="/api/placeholder/400/500" alt="Profile Picture">
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="sub-title">About Me</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti molestiae alias 
+                            quibusdam deserunt a nobis magnam nesciunt pariatur optio nostrum. Deserunt voluptates, 
+                            corrupti blanditiis reiciendis voluptatem dolore neque omnis reprehenderit!</p>
+                            
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab(event, 'skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab(event, 'experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>UI/UX Design</span>Creating intuitive and beautiful user interfaces</li>
+                                <li><span>Frontend Development</span>HTML, CSS, JavaScript, React, Vue.js</li>
+                                <li><span>Backend Development</span>Node.js, Python, Database management</li>
+                                <li><span>Mobile Development</span>React Native, Flutter for cross-platform apps</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>2021-Present</span>Senior Full Stack Developer at Tech Company</li>
+                                <li><span>2019-2021</span>Frontend Developer at Digital Agency</li>
+                                <li><span>2018-2019</span>Junior Web Developer at Startup</li>
+                                <li><span>2017-2018</span>Freelance Web Designer</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2020</span>Advanced JavaScript Certification</li>
+                                <li><span>2018</span>Full Stack Web Development Bootcamp</li>
+                                <li><span>2016</span>Bachelor's Degree in Computer Science</li>
+                                <li><span>2015</span>UI/UX Design Specialization Course</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <div class="social-container">
             <a data-social="Email" style="--accent-color: grey;" href="thorisoshomang11@gmail.com">
@@ -65,7 +112,7 @@
         <footer>
             <div class = "footerContainer">
                 <div class = socialIcons>
-                    <a href="thorisoshomang11@gmail.com"><i class="fa-brands fa-envelope"></i></a>
+                    <a href="mailto:thorisoshomang11@gmail.com"><i class="fa-solid fa-envelope"></i></a>
                     <a href="https://www.instagram.com/thori.mp4?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-square-instagram"></i></a>
                     <a href="www.linkedin.com/in/thoriso-shomang-2977b7265"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="https://github.com/therealthori"><i class="fa-brands fa-square-github"></i></a>
@@ -80,7 +127,7 @@
                     </ul>
                 </div>
                 <div class="footerBottom">
-                    <p>Designed by <span class="designer"></span></p>
+                    <p>&copy; 2025, Designed by <span class="designer">Thoriso Shomang</span></p>
                 </div>
             </div>
             </footer>
