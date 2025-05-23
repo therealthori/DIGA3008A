@@ -1,8 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Get all dropdown elements
+    const dropdowns = document.querySelectorAll('.dropdown');
+                
+    // Add click event for mobile devices
+    dropdowns.forEach(dropdown => {
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        
+        dropbtn.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) { // Check if mobile
+                e.preventDefault();
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+                if (dropdown.style.display === 'block' && window.innerWidth <= 768) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        }
+    });
+    
         // Select elements
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const navLinks = document.querySelectorAll('.nav-list a');
+        const currentPage = window.location.pathname;
         
         // Toggle mobile menu
         hamburger.addEventListener('click', function() {
@@ -18,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                     hamburger.setAttribute('aria-expanded', 'false');
+                }
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active-page');
                 }
             });
         });
@@ -65,7 +97,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+
+        const currentPage = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-list a');
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active-page');
+        }
     });
+
+    // Back-to-top button functionality
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
 
     // Animation on scroll
     const animateOnScroll = function() {
@@ -99,15 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
      // Add current page indicator to navigation
-     const currentPage = window.location.pathname;
-     const navLinks = document.querySelectorAll('.nav-list a');
-     
-     navLinks.forEach(link => {
-         // Check if the link's href matches the current page path
-         if (link.getAttribute('href') === currentPage) {
-             link.classList.add('active-page');
-         }
-     });
 
     // Function to style code blocks with simple syntax highlighting
 function styleCodeBlocks() {

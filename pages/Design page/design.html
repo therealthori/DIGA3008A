@@ -25,7 +25,14 @@
             <nav class="nav-menu">
                 <ul class="nav-list">
                     <li><a href="/pages/Portfolio page/portfolio.html">Great Works</a></li>
-                    <li><a href="/pages/Academia page/academia.html">Academia</a></li>
+                    <li class="dropdown">
+                        <a href="/pages/Academia page/academia.html" class="dropbtn">Academia</a>
+                        <div class="dropdown-content" id="academiaDropdown">
+                            <a href="/pages/Academia page/academia.html">Main</a>
+                            <a href="/pages/Academia page/blogs.html">Blogs</a>
+                            <a href="/pages/Academia page/essays.html">Essays</a>
+                        </div>
+                    </li>
                     <li><a href="/pages/Design page/design.html">Designs</a></li>
                     <li><a href="/pages/About page/about.html">The Boi</a></li>
                 </ul>
@@ -144,19 +151,19 @@
                     
                     <h3>Initial Wireframes</h3>
                     <div class="image-gallery">
-                        <img src="/Images/Home.jpg" alt="Homepage wireframe showing layout structure">
-                        <img src="/Images/Portfolio.jpg" alt="Portfolio page wireframe with project grid">
-                        <img src="/Images/Blog.jpg" alt="Blog page wireframe with article layout">
-                        <img src="/Images/About.jpg" alt="About page wireframe with profile section">
+                        <img src="/Images/1stIHome.jpg" alt="Homepage wireframe showing layout structure" width="200" height="300">
+                        <img src="/Images/1stIPortfolio.jpg" alt="Portfolio page wireframe with project grid" width="300" height="200">
+                        <img src="/Images/Blog.jpg" alt="Blog page wireframe with article layout" width="300" height="200">
+                        <img src="/Images/About.jpg" alt="About page wireframe with profile section" width="300" height="200">
                     </div>
                     <div class="image-caption">Initial wireframe concepts exploring layout and content organization</div>
     
                     <h3>Refined Design Templates</h3>
                     <div class="image-gallery">
-                        <img src="/Images/2ndIHome.jpeg" alt="Refined homepage design with visual hierarchy">
-                        <img src="/Images/2ndPortfolio.jpeg" alt="Enhanced portfolio layout with improved spacing">
-                        <img src="/Images/2ndBlog.jpeg" alt="Blog design with better typography">
-                        <img src="/Images/2ndAboutPage.jpeg" alt="About page with personal branding elements">
+                        <img src="/Images/2ndIHome.jpeg" alt="Refined homepage design with visual hierarchy" width="250" height="350">
+                        <img src="/Images/2ndPortfolio.jpeg" alt="Enhanced portfolio layout with improved spacing" width="250" height="350">
+                        <img src="/Images/2ndBlog.jpeg" alt="Blog design with better typography" width="250" height="350">
+                        <img src="/Images/2ndAboutPage.jpeg" alt="About page with personal branding elements" width="250" height="350">
                     </div>
                     <div class="image-caption">Final design templates incorporating user feedback and usability testing</div>
     
@@ -316,7 +323,7 @@
                 </div>
             </div>
         </div>
-    
+
         <button class="back-to-top" onclick="scrollToTop()">↑</button>
 
         <footer>
@@ -341,6 +348,5 @@
                 </div>
             </div>
             </footer>
-    
         </body>
     </html>

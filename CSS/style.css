@@ -36,6 +36,73 @@ p, li, a {
     font-size: 1rem;
 }
 
+/* Add this to your CSS file or in a style tag */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #552601;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.website-analysis {
+    background-color: #f8f9fa;
+    border-left: 4px solid #3E270B;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 4px;
+}
+
+.website-analysis h2 {
+    color: #552601;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.website-analysis h2 a {
+    color: #552601;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.website-analysis h2 a:hover {
+    color: #AE4600;
+    text-decoration: underline;
+}
+
+.analysis-section {
+    margin: 20px 0;
+}
+
+.analysis-section h3 {
+    color: #AE4600;
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #AE4600;
+    padding-bottom: 5px;
+}
+
 /* Navigation Styles */
 .navbar {
     background: #552601;
@@ -200,6 +267,43 @@ p, li, a {
         align-items: center;
         gap: 1rem;
     }
+}
+
+.key-point {
+    background-color: #fff8e1;
+    border-left: 4px solid #AE4600;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 4px;
+}
+
+.key-point h4 {
+    color: #552601;
+    margin-bottom: 10px;
+}
+
+.quote-highlight {
+    background-color: #f0f8ff;
+    border-left: 4px solid #552601;
+    padding: 20px;
+    margin: 25px 0;
+    font-style: italic;
+    font-size: 18px;
+    border-radius: 4px;
+}
+
+.conclusion-section {
+    background-color: #f5f5f5;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 40px 0;
+    border: 2px solid #AE4600;
+}
+
+.conclusion-section h2 {
+    color: #552601;
+    border-bottom: none;
+    margin-bottom: 20px;
 }
 
 /* Footer */
@@ -948,6 +1052,8 @@ tr:nth-child(even) {
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 80px; /* Add this to account for fixed navbar */
+    padding-top: 20px; /* Add some top padding */
 }
 
 .design-header {
@@ -1067,10 +1173,10 @@ tr:nth-child(even) {
 .design-image {
     max-width: 100%;
     height: auto;
-    margin: 20px 0;
+    display: block;
+    margin: 20px auto;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border: 2px solid #e9ecef;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .image-gallery {
@@ -1621,6 +1727,10 @@ article h5 {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    dropdown-content {
+        position: static;
+    }
+
     .design-container {
         width: 95%;
         padding: 20px;
@@ -1682,9 +1792,34 @@ article h5 {
         padding: 20px;
         margin: 90px auto 20px;
     }
+    
+    design-container {
+        padding: 20px 15px;
+    }
+    
+    .process-step, .goal-card, .reference-card {
+        padding: 15px;
+    }
+    
+    .color-swatch {
+        width: 80px;
+        height: 80px;
+    }
 }
 
 @media (max-width: 480px) {
+    .design-container {
+        padding: 20px 10px;
+    }
+    
+    .design-title {
+        font-size: 28px;
+    }
+    
+    .design-subtitle {
+        font-size: 16px;
+    }
+
     .social-container {
         gap: 0.75rem;
     }
@@ -1738,23 +1873,22 @@ article h5 {
         .home p {
             font-size: 1rem;
         }
+
+        :root {
+            --base-font-size: 13px;
+        }
+        
+        .footerNav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footerNav ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .blog-text {
+            padding: 1rem;
+        }
 }
 
-@media (max-width: 480px) {
-    :root {
-        --base-font-size: 13px;
-    }
-    
-    .footerNav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .footerNav ul li {
-        margin: 0.5rem 0;
-    }
-    
-    .blog-text {
-        padding: 1rem;
-    }
-}

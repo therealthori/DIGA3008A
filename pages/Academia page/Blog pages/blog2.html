@@ -10,10 +10,6 @@
     </script>
 </head>
 <body>
-    <span id="backtotop-btn">
-        <img class="arrow-top" src="https://www.linkpicture.com/q/up-arrow.svg">
-    </span>
-
     <header class="navbar">
         <div class="nav-container">
             <a href="/index.html" class="logo">ThoriStory</a>
@@ -29,7 +25,13 @@
             <nav class="nav-menu">
                 <ul class="nav-list">
                     <li><a href="/pages/Portfolio page/portfolio.html">Great Works</a></li>
-                    <li><a href="/pages/Academia page/academia.html">Academia</a></li>
+                    <li class="dropdown">
+                        <a href="/pages/Academia page/academia.html" class="dropbtn">Academia</a>
+                        <div class="dropdown-content" id="academiaDropdown">
+                            <a href="/pages/Academia page/blogs.html">Blogs</a>
+                            <a href="/pages/Academia page/essays.html">Essays</a>
+                        </div>
+                    </li>
                     <li><a href="/pages/Design page/design.html">Designs</a></li>
                     <li><a href="/pages/About page/about.html">The Boi</a></li>
                 </ul>
@@ -41,6 +43,12 @@
             <div class="blog-header">
                 <h1 class="blog-title">Week 2 Blog Post</h1>
                 <div class="blog-meta">Academic Reflection on Hypertext and Digital Media</div>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="/pages/Academia page/blog.html" class="nav-btn">
+                    ← Return to Blogs
+                </a>
             </div>
     
             <div class="blog-content">
