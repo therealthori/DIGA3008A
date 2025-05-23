@@ -180,30 +180,141 @@ function scrollToTop() {
     });
 }
 
-// Show/hide back to top button based on scroll position
+// Show/hide back to top button
 window.addEventListener('scroll', function() {
-    const backToTopBtn = document.querySelector('.back-to-top');
-    if (window.scrollY > 300) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.visibility = 'visible';
+    const backToTop = document.querySelector('.back-to-top');
+    if (window.pageYOffset > 300) {
+        backToTop.style.display = 'flex';
     } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.visibility = 'hidden';
+        backToTop.style.display = 'none';
     }
 });
 
-// Add smooth scrolling animation on load
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.8s ease-out';
-            }
+// Smooth scrolling for internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Enhanced image gallery interactions
+document.querySelectorAll('.image-gallery img').forEach(img => {
+    img.addEventListener('click', function() {
+        // Create modal for full-size image viewing
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            cursor: pointer;
+        `;
+        
+        const modalImg = document.createElement('img');
+        modalImg.src = this.src;
+        modalImg.style.cssText = `
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        `;
+        
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+        
+        modal.addEventListener('click', () => {
+            document.body.removeChild(modal);
         });
     });
+});
 
-    sections.forEach(section => {
-        observer.observe(section);
+// Add animation to goal cards on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Apply animation to goal cards
+document.querySelectorAll('.goal-card').forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    observer.observe(card);
+});
+
+// Apply animation to process steps
+document.querySelectorAll('.process-step').forEach((step, index) => {
+    step.style.opacity = '0';
+    step.style.transform = 'translateX(-30px)';
+    step.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    observer.observe(step);
+});
+
+// Color swatch interaction
+document.querySelectorAll('.color-swatch').forEach(swatch => {
+    swatch.addEventListener('click', function() {
+        const color = window.getComputedStyle(this).backgroundColor;
+        const tempInput = document.createElement('input');
+        tempInput.value = this.textContent;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        
+        // Show feedback
+        const feedback = document.createElement('div');
+        feedback.textContent = 'Color code copied!';
+        feedback.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #552601;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            font-size: 14px;
+        `;
+        document.body.appendChild(feedback);
+        
+        setTimeout(() => {
+            document.body.removeChild(feedback);
+        }, 2000);
+    });
+});
+
+// Add hover effect to reference cards
+document.querySelectorAll('.reference-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = 'none';
     });
 });
