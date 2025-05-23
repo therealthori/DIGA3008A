@@ -65,8 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-
-        initBackToTopButton();
     });
 
     // Animation on scroll
@@ -175,41 +173,37 @@ function opentab(event, tabname) {
     document.getElementById(tabname).classList.add("active-tab");
 }
 
-// Back to Top Button Functionality
-function initBackToTopButton() {
-    // Create the back to top button if it doesn't exist
-    let backToTopBtn = document.querySelector('.back-to-top');
-    
-    if (!backToTopBtn) {
-        backToTopBtn = document.createElement('button');
-        backToTopBtn.className = 'back-to-top';
-        backToTopBtn.innerHTML = '↑';
-        backToTopBtn.setAttribute('aria-label', 'Back to top');
-        backToTopBtn.setAttribute('title', 'Back to top');
-        document.body.appendChild(backToTopBtn);
-    }
-
-    // Show/hide button based on scroll position
-    function toggleBackToTopButton() {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    }
-
-    // Smooth scroll to top when button is clicked
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-
-    // Event listeners
-    window.addEventListener('scroll', toggleBackToTopButton);
-    backToTopBtn.addEventListener('click', scrollToTop);
-
-    // Initial check for button visibility
-    toggleBackToTopButton();
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
+
+// Show/hide back to top button based on scroll position
+window.addEventListener('scroll', function() {
+    const backToTopBtn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        backToTopBtn.style.opacity = '1';
+        backToTopBtn.style.visibility = 'visible';
+    } else {
+        backToTopBtn.style.opacity = '0';
+        backToTopBtn.style.visibility = 'hidden';
+    }
+});
+
+// Add smooth scrolling animation on load
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+            }
+        });
+    });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
