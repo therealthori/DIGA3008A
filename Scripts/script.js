@@ -375,3 +375,34 @@ document.querySelectorAll('.reference-card').forEach(card => {
         this.style.boxShadow = 'none';
     });
 });
+
+// Google Maps Initialization
+function initMap() {
+    // Coordinates for Melrose North, Johannesburg
+    const melroseNorth = { lat: -26.1125, lng: 28.0589 };
+    
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: melroseNorth,
+        mapTypeId: "roadmap",
+        styles: [
+            {
+                featureType: "poi",
+                stylers: [{ visibility: "off" }] // Hide points of interest
+            }
+        ]
+    });
+
+    // Custom marker
+    new google.maps.Marker({
+        position: melroseNorth,
+        map: map,
+        title: "Melrose North, Johannesburg",
+        icon: {
+            url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+        }
+    });
+}
+
+// Fallback if API fails
+window.initMap = initMap;

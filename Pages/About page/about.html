@@ -9,6 +9,7 @@
     crossorigin="anonymous">
     </script>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWWOw8dNrFndU_szJFUa_mx121U9K6agw&callback=initMap" async defer></script>
 </head>
 <body>
     <header class="navbar">
@@ -70,6 +71,7 @@
                             <p class="tab-links active-link" onclick="opentab(event, 'skills')">Skills</p>
                             <p class="tab-links" onclick="opentab(event, 'experience')">Experience</p>
                             <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
+                            <p class="tab-links" onclick="opentab(event, 'location')">Location</p>
                         </div>
                         <div class="tab-contents active-tab" id="skills">
                             <ul>
@@ -81,9 +83,9 @@
                         </div>
                         <div class="tab-contents" id="experience">
                             <ul>
-                                <li><span>2025-Present</span>Wits 3rd Team Hockey Play</li>
+                                <li><span>2025-Present</span>Wits 3rd Team Hockey Player</li>
                                 <li><span>2023-2023</span>Computer Skills Facilitator</li>
-                                <li><span>2018-2019</span>Junior Web Developer at Startup</li>
+                                <li><span>2025-Present</span>KODA CFO and content creator</li>
                                 <li><span>2025-Present</span>Freelance Web Designer</li>
                             </ul>
                         </div>
@@ -91,6 +93,11 @@
                             <ul>
                                 <li><span>2021</span>Matric @ Cornwall Hill College</li>
                                 <li><span>2026</span>BA Digtial Arts @ Wits University</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="location">
+                            <ul>
+                                <li><div id="map"></div></li>        
                             </ul>
                         </div>
                     </div>

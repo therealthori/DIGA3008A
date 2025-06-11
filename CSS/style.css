@@ -1534,6 +1534,7 @@ article h5 {
 .about-col-1 img{
     width: 100%;
     border-radius: 15px;
+    padding-left: 100px;
 }
 
 .about-col-2{
@@ -1596,6 +1597,22 @@ article h5 {
 
 .tab-contents ul {
     padding: 0;
+}
+
+/* Google Maps Container */
+#map {
+    height: 400px; /* Fixed height is important */
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px solid #552601;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#map:hover {
+    transform: translateY(-5px);
 }
 
 .nav-buttons {
@@ -1755,6 +1772,10 @@ article h5 {
         padding: 0.65rem;
     }
 
+    #map {
+        height: 300px;
+    }
+
     .row {
         flex-direction: column;
     }
@@ -1806,6 +1827,10 @@ article h5 {
 @media (max-width: 480px) {
     .design-container {
         padding: 20px 10px;
+    }
+
+    #map {
+        height: 250px;
     }
     
     .design-title {
