@@ -345,31 +345,6 @@ footer {
     margin: 0 auto;
 }
 
-.socialIcons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.socialIcons a {
-    text-decoration: none;
-    padding: 0.75rem;
-    background-color: white;
-    margin: 0.5rem;
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.socialIcons a i {
-    font-size: 1.5rem;
-    color: #552601;
-    opacity: 0.9;
-}
-
 .footerNav {
     margin: 1.5rem 0;
 }
@@ -527,53 +502,99 @@ footer {
 }
 
 /* Footer Styles */
-.site-footer {
-    background-color: #552601;
-    color: white;
-    padding: 3rem 0;
-    margin-top: 4rem;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+.footerContainer .social-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.footer-links {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
     justify-content: center;
-}
-
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #C4B9AD;
-}
-
-.social-links {
-    display: flex;
     gap: 1.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
 }
 
-.social-links a {
+.footerContainer .social-container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footerContainer .social-container a svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    transition: all 0.3s ease;
+}
+
+.footerContainer .social-container a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.footerContainer .social-container a:hover svg {
+    fill: white;
+}
+
+/* Tooltip effect */
+.footerContainer .social-container a::before {
+    content: attr(data-social);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: var(--accent-color);
     color: white;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
 }
 
-.social-links a:hover {
-    color: #C4B9AD;
+.footerContainer .social-container a:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-15px);
+}
+
+/* Specific icon colors */
+.footerContainer .social-container a[data-social="Email"] {
+    color: #D44638; /* Gmail red */
+}
+
+.footerContainer .social-container a[data-social="LinkedIn"] {
+    color: #0077B5; /* LinkedIn blue */
+}
+
+.footerContainer .social-container a[data-social="Instagram"] {
+    color: #E4405F; /* Instagram pink */
+}
+
+.footerContainer .social-container a[data-social="GitHub"] {
+    color: #181717; /* GitHub black */
+}
+
+/* Hover background colors */
+.footerContainer .social-container a[data-social="Email"]:hover {
+    background-color: #D44638;
+}
+
+.footerContainer .social-container a[data-social="LinkedIn"]:hover {
+    background-color: #0077B5;
+}
+
+.footerContainer .social-container a[data-social="Instagram"]:hover {
+    background-color: #E4405F;
+}
+
+.footerContainer .social-container a[data-social="GitHub"]:hover {
+    background-color: #181717;
 }
 
 .copyright {
@@ -735,7 +756,7 @@ footer {
 
 /* Home Section */
 .home {
-    background-image: url(Images/Thori.JPG);
+    background-image: url(../Images/Thori.JPG);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -1436,7 +1457,7 @@ ul li a:hover {
     letter-spacing: 1px;
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('./Images/Brown.jpeg');
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('../Images/Brown.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1492,103 +1513,6 @@ article h5 {
     font-size: 1.5rem;
     margin: 1.5rem 0;
     letter-spacing: 0.1rem;
-}
-
-/* Social Media Icons */
-.social-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin: 2rem 0;
-}
-
-.social-container a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    background-color: white;
-    border-radius: 50%;
-    padding: 0.75rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.social-container a svg {
-    width: 100%;
-    height: 100%;
-    fill: currentColor;
-    transition: all 0.3s ease;
-}
-
-.social-container a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.social-container a:hover svg {
-    fill: white;
-}
-
-/* Tooltip effect */
-.social-container a::before {
-    content: attr(data-social);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    background-color: var(--accent-color);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    white-space: nowrap;
-    opacity: 0;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
-.social-container a:hover::before {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-15px);
-}
-
-/* Specific icon colors */
-.social-container a[data-social="Email"] {
-    color: #D44638; /* Gmail red */
-}
-
-.social-container a[data-social="LinkedIn"] {
-    color: #0077B5; /* LinkedIn blue */
-}
-
-.social-container a[data-social="Instagram"] {
-    color: #E4405F; /* Instagram pink */
-}
-
-.social-container a[data-social="GitHub"] {
-    color: #181717; /* GitHub black */
-}
-
-/* Hover background colors */
-.social-container a[data-social="Email"]:hover {
-    background-color: #D44638;
-}
-
-.social-container a[data-social="LinkedIn"]:hover {
-    background-color: #0077B5;
-}
-
-.social-container a[data-social="Instagram"]:hover {
-    background-color: #E4405F;
-}
-
-.social-container a[data-social="GitHub"]:hover {
-    background-color: #181717;
 }
 
 /* about */
@@ -1744,6 +1668,7 @@ article h5 {
 
 .pdf-container {
     margin: 2rem 0;
+    width: 1000px;
     border: 1px solid #eaeaea;
     border-radius: 8px;
     overflow: hidden;
@@ -1772,6 +1697,13 @@ article h5 {
 
 .pdf-alternative a:hover {
     text-decoration: underline;
+}
+
+.LI-profile-badge {
+    margin: 2rem auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 @keyframes fadeInUp {
@@ -1809,11 +1741,15 @@ article h5 {
         justify-content: center;
     }
 
-    .social-container {
+    .LI-profile-badge {
+        margin: 1rem auto;
+    }
+
+    .footerContainer .social-container {
         gap: 1rem;
     }
     
-    .social-container a {
+    .footerContainer .social-container a {
         width: 2.75rem;
         height: 2.75rem;
         padding: 0.65rem;
