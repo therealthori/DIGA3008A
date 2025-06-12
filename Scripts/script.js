@@ -14,6 +14,42 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    function updateProgressBar(){
+        const {scrollTop, scrollHeight} = document.documentElement;
+        const scrollPercent = scrollTop / (scrollHeight - window.innerHeight) * 100 + '%';
+        console.log(scrollPercent);
+
+        document.querySelector('#progress-bar').style.setProperty('--progress', scrollPercent);
+    }
+    
+    document.addEventListener('scroll', updateProgressBar);
+
+    // Highlight current page in navigation
+function setActivePage() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-list a');
+    
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        
+        // Remove active class from all links first
+        link.classList.remove('active-page');
+        
+        // Add active class to matching link
+        if (linkPage === currentPage) {
+            link.classList.add('active-page');
+        }
+        
+        // Special case for index page
+        if (currentPage === 'index.html' && linkPage === '../../index.html') {
+            link.classList.add('active-page');
+        }
+    });
+}
+
+// Call the function when page loads
+setActivePage();
     
     // Close dropdowns when clicking outside
     document.addEventListener('click', function(e) {
@@ -376,33 +412,40 @@ document.querySelectorAll('.reference-card').forEach(card => {
     });
 });
 
-// Google Maps Initialization
+// Ensure this is defined before the API script loads
 function initMap() {
-    // Coordinates for Melrose North, Johannesburg
-    const melroseNorth = { lat: -26.1125, lng: 28.0589 };
-    
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: melroseNorth,
-        mapTypeId: "roadmap",
-        styles: [
-            {
-                featureType: "poi",
-                stylers: [{ visibility: "off" }] // Hide points of interest
-            }
-        ]
-    });
+    try {
+        const melroseNorth = { lat: -26.1125, lng: 28.0589 };
+        
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: melroseNorth,
+            mapTypeId: "roadmap",
+            styles: [
+                {
+                    featureType: "poi",
+                    stylers: [{ visibility: "off" }]
+                }
+            ]
+        });
 
-    // Custom marker
-    new google.maps.Marker({
-        position: melroseNorth,
-        map: map,
-        title: "Melrose North, Johannesburg",
-        icon: {
-            url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
-        }
-    });
+        new google.maps.Marker({
+            position: melroseNorth,
+            map: map,
+            title: "Melrose North, Johannesburg",
+            icon: {
+                url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+            }
+        });
+    } catch (error) {
+        console.error("Google Maps initialization error:", error);
+        // Fallback content or error message
+        document.getElementById("map").innerHTML = 
+            '<div style="padding: 20px; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">' +
+            'Map could not be loaded. Please check your internet connection and try again.' +
+            '</div>';
+    }
 }
 
-// Fallback if API fails
+// Make sure the function is available globally
 window.initMap = initMap;

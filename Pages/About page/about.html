@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SiteThori</title>
+    <title>SiteThori - About</title>
     <link rel="stylesheet" href="../../CSS/style.css">
     <script src="https://kit.fontawesome.com/b615dcc3db.js"
     crossorigin="anonymous">
     </script>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWWOw8dNrFndU_szJFUa_mx121U9K6agw&callback=initMap" async defer></script>
 </head>
 <body>
     <header class="navbar">
@@ -49,6 +48,7 @@
                     <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="thoriso-shomang-2977b7265" data-version="v1">
                         <a class="badge-base__link LI-simple-link" href="https://za.linkedin.com/in/thoriso-shomang-2977b7265?trk=profile-badge"></a>
                     </div>
+                    <h2>Motto</h2>
                     <blockquote>
                         "I am the diligent, vigilant, meticulous, sagacious, conscientious, analytical and methodical individual"  
                     </blockquote>
@@ -65,7 +65,10 @@
                     </div>
                     <div class="about-col-2">
                         <h1 class="sub-title">About Me</h1>
-                        <p></p>
+                        <p>My name is Thoriso Shomang, born and breed in Pretoria, South Africa. I currently live in Johannesburg and I am a student
+                            at the University of Witwatersrand. I am studying a Bachelor of Arts in Digital Arts and I am doing my 3rd year; majoring in Game Design, 
+                            Writing and Interactivity and Interactive Media. I am a designer and creator that is able to implement their artist view to life.
+                        </p>
                             
                         <div class="tab-titles">
                             <p class="tab-links active-link" onclick="opentab(event, 'skills')">Skills</p>
@@ -75,8 +78,8 @@
                         </div>
                         <div class="tab-contents active-tab" id="skills">
                             <ul>
-                                <li><span>C# Language</span>Common Language I used for unity</li>
-                                <li><span>Video Editing</span>HTML, CSS, JavaScript, React, Vue.js</li>
+                                <li><span>Programming</span>Languages: HTML, CSS, JavaScript, C#</li>
+                                <li><span>Video Editing</span>Software Used: Davinci Resolve, VN video editor, CapCut</li>
                                 <li><span>Drummer</span>Played mostly at church</li>
                                 <li><span>Mobile Development</span>React Native, Flutter for cross-platform apps</li>
                             </ul>
@@ -97,7 +100,18 @@
                         </div>
                         <div class="tab-contents" id="location">
                             <ul>
-                                <li><div id="map"></div></li>        
+                                <li><div id="map">
+                                    <!-- Fallback content -->
+                                    <iframe 
+                                        width="100%" 
+                                        height="400" 
+                                        frameborder="0" 
+                                        scrolling="no" 
+                                        marginheight="0" 
+                                        marginwidth="0" 
+                                        src="https://maps.google.com/maps?q=-26.1125,28.0589&z=15&output=embed">
+                                    </iframe>
+                                </div></li>        
                             </ul>
                         </div>
                     </div>
@@ -128,6 +142,7 @@
             </footer>
 
             <script src="../../Scripts/script.js"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWWOw8dNrFndU_szJFUa_mx121U9K6agw&callback=initMap" async defer></script>
     
         </body>
     </html>
