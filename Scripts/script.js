@@ -450,112 +450,100 @@ function initMap() {
 // Make sure the function is available globally
 window.initMap = initMap;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get elements
+document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     const clearSearch = document.getElementById('clearSearch');
     const blogCards = document.querySelectorAll('.blog-card');
-    const blogGrid = document.querySelector('.blog-grid');
-    
-    // Create no results message element if it doesn't exist
-    let noResultsMsg = document.querySelector('.no-results');
-    if (!noResultsMsg) {
-        noResultsMsg = document.createElement('div');
-        noResultsMsg.className = 'no-results';
-        noResultsMsg.textContent = 'No matching blog posts found.';
-        blogGrid.parentNode.insertBefore(noResultsMsg, blogGrid.nextSibling);
-    }
+    const noResultsMsg = document.querySelector('.no-results');
 
-    // Search timeout variable for debounce
     let searchTimeout;
 
-    // Highlight matching text function
+    // Highlight matching text inside element
     function highlightText(element, searchTerm) {
-        const text = element.textContent;
-        const regex = new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-        const highlighted = text.replace(regex, match => `<span class="highlight">${match}</span>`);
-        element.innerHTML = highlighted;
+      const text = element.textContent;
+      if (!searchTerm) {
+        element.textContent = text;
+        return;
+      }
+      const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      const newHTML = text.replace(regex, '<span class="highlight">$1</span>');
+      element.innerHTML = newHTML;
     }
 
-    // Reset highlights function
+    // Reset highlighting on all blog cards titles and excerpts
     function resetHighlights() {
-        document.querySelectorAll('.highlight').forEach(highlight => {
-            const parent = highlight.parentNode;
-            parent.textContent = parent.textContent;
-        });
+      blogCards.forEach(card => {
+        const title = card.querySelector('.blog-card-title');
+        const excerpt = card.querySelector('.blog-card-excerpt');
+        title.textContent = title.textContent; // Reset to plain text
+        excerpt.textContent = excerpt.textContent;
+      });
     }
 
     // Main search function
     function performSearch() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        let hasResults = false;
-        
-        resetHighlights();
-        
-        blogCards.forEach(card => {
-            const title = card.querySelector('.blog-card-title');
-            const excerpt = card.querySelector('.blog-card-excerpt');
-            const titleText = title.textContent.toLowerCase();
-            const excerptText = excerpt.textContent.toLowerCase();
-            
-            if (searchTerm === '') {
-                card.style.display = 'block';
-                hasResults = true;
-            } else if (titleText.includes(searchTerm) || excerptText.includes(searchTerm)) {
-                card.style.display = 'block';
-                hasResults = true;
-                
-                // Highlight matches
-                if (titleText.includes(searchTerm)) {
-                    highlightText(title, searchTerm);
-                }
-                if (excerptText.includes(searchTerm)) {
-                    highlightText(excerpt, searchTerm);
-                }
-            } else {
-                card.style.display = 'none';
-            }
-        });
-        
-        // Show/hide no results message and clear button
-        if (searchTerm === '') {
-            noResultsMsg.style.display = 'none';
-            clearSearch.style.display = 'none';
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      resetHighlights();
+
+      let hasResults = false;
+
+      blogCards.forEach(card => {
+        const title = card.querySelector('.blog-card-title');
+        const excerpt = card.querySelector('.blog-card-excerpt');
+
+        const titleText = title.textContent.toLowerCase();
+        const excerptText = excerpt.textContent.toLowerCase();
+
+        if (searchTerm === '' || titleText.includes(searchTerm) || excerptText.includes(searchTerm)) {
+          card.style.display = 'flex';
+          hasResults = true;
+          if (searchTerm) {
+            if (titleText.includes(searchTerm)) highlightText(title, searchTerm);
+            if (excerptText.includes(searchTerm)) highlightText(excerpt, searchTerm);
+          }
         } else {
-            clearSearch.style.display = 'block';
-            noResultsMsg.style.display = hasResults ? 'none' : 'block';
+          card.style.display = 'none';
         }
+      });
+
+      // Show or hide no results message
+      noResultsMsg.style.display = hasResults ? 'none' : 'block';
+
+      // Show or hide clear button based on input
+      if (searchTerm.length > 0) {
+        clearSearch.classList.add('visible');
+        clearSearch.setAttribute('aria-hidden', 'false');
+      } else {
+        clearSearch.classList.remove('visible');
+        clearSearch.setAttribute('aria-hidden', 'true');
+      }
     }
-    
-    // Event listeners
+
+    // Event Listeners
     searchButton.addEventListener('click', performSearch);
-    
-    searchInput.addEventListener('keyup', function(e) {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
-        
-        // Debounce the search
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            performSearch();
-        }, 300);
-    });
-    
-    clearSearch.addEventListener('click', function() {
-        searchInput.value = '';
+
+    searchInput.addEventListener('keyup', event => {
+      if (event.key === 'Enter') {
         performSearch();
-        this.style.display = 'none';
-    });
-    
-    // Clear search when input is empty
-    searchInput.addEventListener('input', function() {
-        if (this.value === '') {
-            performSearch();
-        }
+      }
+
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(performSearch, 300);
     });
 
-    // Initialize search on page load
+    clearSearch.addEventListener('click', () => {
+      searchInput.value = '';
+      performSearch();
+      searchInput.focus();
+    });
+
+    searchInput.addEventListener('input', () => {
+      if (searchInput.value.trim() === '') {
+        performSearch();
+      }
+    });
+
+    // Initial search to show all
     performSearch();
-});
+  });

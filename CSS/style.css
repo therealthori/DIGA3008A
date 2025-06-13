@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 :root {
     --base-font-size: 16px;
@@ -1475,49 +1476,77 @@ ul li a:hover {
 
 .blog-search {
     display: flex;
-    margin: 2rem 0;
     max-width: 500px;
-}
-
-#searchInput {
-    flex: 1;
-    padding: 0.8rem 1rem;
+    margin: 0 auto;
     border: 2px solid #552601;
-    border-radius: 4px 0 0 4px;
-    font-size: 1rem;
-    outline: none;
-}
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff8e1;
+    box-shadow: 0 2px 6px rgba(85,38,1,0.2);
+  }
 
-#searchButton, #clearSearch {
-    padding: 0 1.2rem;
+  #searchInput {
+    flex-grow: 1;
+    border: none;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #552601;
+    outline-offset: 2px;
+  }
+
+  #searchInput::placeholder {
+    color: #ae4600cc;
+    font-weight: 400;
+  }
+
+  #searchButton, #clearSearch {
+    cursor: pointer;
+    border: none;
     background-color: #552601;
     color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    font-size: 1.25rem;
+    transition: background-color 0.25s ease;
+    user-select: none;
+    border-left: 1px solid #ae4600;
+  }
 
-#searchButton {
-    border-radius: 0 4px 4px 0;
-}
-
-#searchButton:hover, #clearSearch:hover {
+  #searchButton:hover {
     background-color: #AE4600;
-}
+  }
 
-.no-results {
+  #clearSearch {
+    background-color: #ae4600;
+    border-left: 0;
+    border-radius: 0 6px 6px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  #clearSearch.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .material-icons {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .no-results {
     text-align: center;
-    padding: 2rem;
-    color: #552601;
+    color: #ae4600;
+    font-weight: 600;
     font-size: 1.2rem;
+    margin-top: 2rem;
     display: none;
-}
+  }
 
-.highlight {
-    background-color: #fff8e1;
-    padding: 0.1rem 0.2rem;
-    border-radius: 2px;
-}
 
 /* Blog index page styles */
 .blog-grid {
@@ -1850,7 +1879,7 @@ article h5 {
     text-decoration: underline;
 }
 
-.LI-profile-badge {
+.profile-badge {
     margin: 2rem auto;
     max-width: 100%;
     display: flex;
@@ -1922,6 +1951,10 @@ article h5 {
     #map {
         height: 300px;
     }
+
+    .blog-search {
+        max-width: 100%;
+      }
 
     .row {
         flex-direction: column;
