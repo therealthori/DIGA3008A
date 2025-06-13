@@ -1473,6 +1473,52 @@ ul li a:hover {
     content: ' →';
 }
 
+.blog-search {
+    display: flex;
+    margin: 2rem 0;
+    max-width: 500px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 2px solid #552601;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+#searchButton, #clearSearch {
+    padding: 0 1.2rem;
+    background-color: #552601;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchButton {
+    border-radius: 0 4px 4px 0;
+}
+
+#searchButton:hover, #clearSearch:hover {
+    background-color: #AE4600;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #552601;
+    font-size: 1.2rem;
+    display: none;
+}
+
+.highlight {
+    background-color: #fff8e1;
+    padding: 0.1rem 0.2rem;
+    border-radius: 2px;
+}
+
 /* Blog index page styles */
 .blog-grid {
     display: grid;

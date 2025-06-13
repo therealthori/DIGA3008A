@@ -449,3 +449,113 @@ function initMap() {
 
 // Make sure the function is available globally
 window.initMap = initMap;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const clearSearch = document.getElementById('clearSearch');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const blogGrid = document.querySelector('.blog-grid');
+    
+    // Create no results message element if it doesn't exist
+    let noResultsMsg = document.querySelector('.no-results');
+    if (!noResultsMsg) {
+        noResultsMsg = document.createElement('div');
+        noResultsMsg.className = 'no-results';
+        noResultsMsg.textContent = 'No matching blog posts found.';
+        blogGrid.parentNode.insertBefore(noResultsMsg, blogGrid.nextSibling);
+    }
+
+    // Search timeout variable for debounce
+    let searchTimeout;
+
+    // Highlight matching text function
+    function highlightText(element, searchTerm) {
+        const text = element.textContent;
+        const regex = new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+        const highlighted = text.replace(regex, match => `<span class="highlight">${match}</span>`);
+        element.innerHTML = highlighted;
+    }
+
+    // Reset highlights function
+    function resetHighlights() {
+        document.querySelectorAll('.highlight').forEach(highlight => {
+            const parent = highlight.parentNode;
+            parent.textContent = parent.textContent;
+        });
+    }
+
+    // Main search function
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        let hasResults = false;
+        
+        resetHighlights();
+        
+        blogCards.forEach(card => {
+            const title = card.querySelector('.blog-card-title');
+            const excerpt = card.querySelector('.blog-card-excerpt');
+            const titleText = title.textContent.toLowerCase();
+            const excerptText = excerpt.textContent.toLowerCase();
+            
+            if (searchTerm === '') {
+                card.style.display = 'block';
+                hasResults = true;
+            } else if (titleText.includes(searchTerm) || excerptText.includes(searchTerm)) {
+                card.style.display = 'block';
+                hasResults = true;
+                
+                // Highlight matches
+                if (titleText.includes(searchTerm)) {
+                    highlightText(title, searchTerm);
+                }
+                if (excerptText.includes(searchTerm)) {
+                    highlightText(excerpt, searchTerm);
+                }
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Show/hide no results message and clear button
+        if (searchTerm === '') {
+            noResultsMsg.style.display = 'none';
+            clearSearch.style.display = 'none';
+        } else {
+            clearSearch.style.display = 'block';
+            noResultsMsg.style.display = hasResults ? 'none' : 'block';
+        }
+    }
+    
+    // Event listeners
+    searchButton.addEventListener('click', performSearch);
+    
+    searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+        
+        // Debounce the search
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch();
+        }, 300);
+    });
+    
+    clearSearch.addEventListener('click', function() {
+        searchInput.value = '';
+        performSearch();
+        this.style.display = 'none';
+    });
+    
+    // Clear search when input is empty
+    searchInput.addEventListener('input', function() {
+        if (this.value === '') {
+            performSearch();
+        }
+    });
+
+    // Initialize search on page load
+    performSearch();
+});
